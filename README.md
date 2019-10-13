@@ -5,7 +5,7 @@ gnome-encfs
 >
 >Gnome-encfs's author is Oben Sonne.
 >He doesn't seem to maintain it anymore.
->As I am still using it daily, I have forked it so that it gnome-encfs still
+>As I am still using it daily, I have forked it so that gnome-encfs still
 >works nowadays.
 >
 >The original gnome-encfs code can be found [here][org].
