@@ -1,6 +1,15 @@
 gnome-encfs
 ===========
 
+>Note
+>
+>Gnome-encfs's author is Oben Sonne.
+>He doesn't seem to maintain it anymore.
+>As I am still using it daily, I have forked it so that it gnome-encfs still
+>works nowadays.
+>
+>The original gnome-encfs code can be found [here][org].
+
 *gnome-encfs* integrates [EncFS][efs] folders into the GNOME desktop by storing
 their passwords in the [keyring][gkr] and optionally mounting them at login
 using GNOME's autostart mechanism.
@@ -99,10 +108,12 @@ Usage should be straight forward - otherwise [submit an issue][itr].
 Unfortunately there's no equivalent to GNOME's autostart scripts which could be
 used to automatically unmount your EncFS folders on logout (without shutting
 down). However, there's a manual solution using a [GDM hook script][gdm]:
-`/etc/gdm/PostSession/Default`. Open this file in an editor (requires *root*
-privileges) and add these lines:
+`/etc/gdm/PostSession/Default` or `/etc/gdm3/PostSession/Default`. Open this
+file in an editor (requires *root* privileges) and add these lines:
 
-    mount -t fuse.encfs | grep "user=$USER" | awk '{print $3}' | while read MPOINT ; do
+    USER_ID=$(id -u $USER)
+    PATTERN="(user=${USER}|user_id=${USER_ID})"
+    mount -t fuse.encfs | grep -E "$PATTERN" | awk '{print $3}' | while read MPOINT ; do
         sudo -u $USER fusermount -u "$MPOINT"
     done
 
@@ -120,12 +131,12 @@ License
 
 *gnome-encfs* is licensed as [GPL][gpl].
 
+[org]: https://bitbucket.org/obensonne/gnome-encfs
 [dbx]: http://dropbox.com
-[dlp]: http://bitbucket.org/obensonne/gnome-encfs/get/tip.tar.gz
-[efs]: http://www.arg0.net/encfs
+[dlp]: https://github.com/FredericLespez/gnome-encfs/archive/master.zip
+[efs]: https://vgough.github.io/encfs/
 [gdm]: http://library.gnome.org/admin/gdm/stable/configuration.html
 [gkr]: http://live.gnome.org/GnomeKeyring
 [gpl]: http://www.gnu.org/licenses/gpl.html
-[itr]: http://bitbucket.org/obensonne/gnome-encfs/issues/?status=new&status=open
+[itr]: https://github.com/FredericLespez/gnome-encfs/issues
 [ehi]: http://www.ict.griffith.edu.au/anthony/info/crypto/encfs.hints
-
