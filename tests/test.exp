@@ -161,13 +161,12 @@ autostart on
 # EXPECT: autostart content
 [Desktop Entry]
 Comment=Mount EncFS folders configured in GNOME's keyring
-Name=EncFS
 Exec=gnome-encfs autostart
-Version=1.0
-Type=Application
-X-GNOME-Autostart-enabled=true
 Icon=folder
-
+Name=EncFS
+Type=Application
+Version=1.0
+X-GNOME-Autostart-enabled=true
 # EXPECT: 1 succeeding edits
 # EXPECT: autostart off
 autostart off

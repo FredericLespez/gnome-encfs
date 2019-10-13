@@ -127,7 +127,8 @@ $GENCFS -e $TENV/m2 --econfig "-" --password p2 --epath $TENV/e2 --mpoint $TENV/
 expect "autostart on"
 test -e autostart.desktop && echo "autostart on" ||  echo "autostart off"
 expect "autostart content"
-cat autostart.desktop
+head -n 1 autostart.desktop
+tail -n +2 autostart.desktop | grep -Ev '^$' | sort
 expect "1 succeeding edits"
 $GENCFS -e $TENV/m3b --econfig "-" --password p3 --epath $TENV/e3 --mpoint $TENV/m3b --proceed n --amount n
 expect "autostart off"
@@ -220,4 +221,3 @@ expect "no listed items"
 $GENCFS -l
 expect "autostart off"
 test -e autostart.desktop && echo "autostart on" || echo "autostart off"
-
