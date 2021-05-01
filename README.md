@@ -21,17 +21,12 @@ same password for EncFS folders as for your local user account. This is bad
 because local account passwords usually are weaker than those one should use
 for encrypting online stored data, e.g. in a [Dropbox][dbx].
 
-[![Flattr this][flattr-img]][flattr-url]
-
-[flattr-url]: http://flattr.com/thing/142770/gnome-encfs
-[flattr-img]: http://api.flattr.com/button/flattr-badge-large.png "Flattr this"
-
 Download
 --------
 
 Download the [package][dlp] *or* checkout the source:
 
-    $ hg clone http://bitbucket.org/obensonne/gnome-encfs
+    $ git clone https://github.com/FredericLespez/gnome-encfs.git
 
 Installation
 ------------
@@ -131,7 +126,7 @@ License
 
 *gnome-encfs* is licensed as [GPL][gpl].
 
-[org]: https://bitbucket.org/obensonne/gnome-encfs
+[org]: https://hg.sr.ht/~obensonne/gnome-encfs
 [dbx]: http://dropbox.com
 [dlp]: https://github.com/FredericLespez/gnome-encfs/archive/master.zip
 [efs]: https://vgough.github.io/encfs/
